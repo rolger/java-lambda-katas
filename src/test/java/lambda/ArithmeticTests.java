@@ -34,7 +34,7 @@ public class ArithmeticTests {
 
 		BigDecimal result = function.calculate(BigDecimal.valueOf(6), BigDecimal.valueOf(32));
 
-		Assertions.assertThat(isNotLambda(function)).isTrue();
+		Assertions.assertThat(isLambda(function)).isTrue();
 		// TODO: fix the assertion
 		Assertions.assertThat(result).isEqualTo(BigDecimal.ZERO);
 	}
