@@ -1,12 +1,14 @@
 package stream.api;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
+import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 import javax.xml.bind.JAXB;
 
@@ -29,12 +31,11 @@ public class Exercise3Test {
 		List<Customer> customerList = this.mall.getCustomerList();
 
 		/**
-		 * Count how many items there are in {@link Customer.wantToBuy} using
-		 * {@link Stream#count}
+		 * Count how many items there are in {@link Customer.wantToBuy}
 		 */
 		long sum = 0L;
 
-		assertThat(sum, is(32L));
+		assertThat(sum).isEqualTo(32L);
 	}
 
 	@Test
@@ -48,8 +49,8 @@ public class Exercise3Test {
 		Comparator<Integer> comparator = null;
 		Optional<Integer> richestCustomer = null;
 
-		assertThat(comparator.getClass().getSimpleName(), is("NaturalOrderComparator"));
-		assertThat(richestCustomer.get(), is(12000));
+		assertThat(comparator.getClass().getSimpleName()).isEqualTo("NaturalOrderComparator");
+		assertThat(richestCustomer).hasValue(12000);
 	}
 
 	@Test
@@ -63,6 +64,6 @@ public class Exercise3Test {
 		Comparator<Customer> comparator = null;
 		Optional<Customer> youngestCustomer = null;
 
-		assertThat(youngestCustomer.get(), is(customerList.get(8)));
+		assertThat(youngestCustomer).hasValue(customerList.get(8));
 	}
 }

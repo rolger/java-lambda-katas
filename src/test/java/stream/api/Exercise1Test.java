@@ -1,8 +1,6 @@
 package stream.api;
 
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -43,8 +41,8 @@ public class Exercise1Test {
 
 		assertTrue("Solution for Predicate should be lambda expression", AssertUtil.isLambda(richCustomerCondition));
 		List<Customer> richCustomer = richCustomerStream.collect(Collectors.toList());
-		assertThat(richCustomer, hasSize(2));
-		assertThat(richCustomer, contains(customerList.get(3), customerList.get(7)));
+		assertThat(richCustomer).hasSize(2);
+		assertThat(richCustomer).contains(customerList.get(3), customerList.get(7));
 	}
 
 	@Test
@@ -62,7 +60,7 @@ public class Exercise1Test {
 
 		assertTrue(AssertUtil.isLambda(getAgeFunction));
 		List<Integer> ages = ageStream.collect(Collectors.toList());
-		assertThat(ages, hasSize(10));
-		assertThat(ages, contains(22, 27, 28, 38, 26, 22, 32, 35, 21, 36));
+		assertThat(ages).hasSize(10);
+		assertThat(ages).contains(22, 27, 28, 38, 26, 22, 32, 35, 21, 36);
 	}
 }

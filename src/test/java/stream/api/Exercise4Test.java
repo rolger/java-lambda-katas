@@ -1,7 +1,6 @@
 package stream.api;
 
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.util.List;
@@ -34,7 +33,7 @@ public class Exercise4Test {
 		 */
 		Optional<Customer> firstCustomer = null;
 
-		assertThat(firstCustomer.get(), is(customerList.get(0)));
+		assertThat(firstCustomer).hasValue(customerList.get(0));
 	}
 
 	@Test
@@ -47,7 +46,7 @@ public class Exercise4Test {
 		 */
 		boolean olderThan40Exists = true;
 
-		assertThat(olderThan40Exists, is(false));
+		assertThat(olderThan40Exists).isFalse();
 	}
 
 	@Test
@@ -60,7 +59,7 @@ public class Exercise4Test {
 		 */
 		boolean allOlderThan20 = false;
 
-		assertThat(allOlderThan20, is(true));
+		assertThat(allOlderThan20).isTrue();
 	}
 
 	@Test
@@ -73,6 +72,6 @@ public class Exercise4Test {
 		 */
 		boolean everyoneWantsSomething = false;
 
-		assertThat(everyoneWantsSomething, is(true));
+		assertThat(everyoneWantsSomething).isTrue();
 	}
 }

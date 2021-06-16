@@ -1,5 +1,7 @@
 package stream.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.entry;
 import static org.hamcrest.Matchers.contains;
 import static org.hamcrest.Matchers.hasItems;
 import static org.hamcrest.Matchers.hasSize;
@@ -9,11 +11,13 @@ import static org.junit.Assert.assertThat;
 import java.io.File;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 
 import javax.xml.bind.JAXB;
 
+import org.assertj.core.api.Condition;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,8 +42,8 @@ public class Exercise5Test {
 		 */
 		List<String> nameList = null;
 
-		assertThat(nameList,
-				contains("Joe", "Steven", "Patrick", "Diana", "Chris", "Kathy", "Alice", "Andrew", "Martin", "Amy"));
+		assertThat(nameList) //
+				.contains("Joe", "Steven", "Patrick", "Diana", "Chris", "Kathy", "Alice", "Andrew", "Martin", "Amy");
 	}
 
 	@Test
@@ -52,8 +56,7 @@ public class Exercise5Test {
 		 */
 		Set<Integer> ageSet = null;
 
-		assertThat(ageSet, hasSize(9));
-		assertThat(ageSet, hasItems(21, 22, 26, 27, 28, 32, 35, 36, 38));
+		assertThat(ageSet).hasSize(9).contains(21, 22, 26, 27, 28, 32, 35, 36, 38);
 	}
 
 	@Test
@@ -66,7 +69,7 @@ public class Exercise5Test {
 		 */
 		String string = null;
 
-		assertThat(string, is("[Joe,Steven,Patrick,Diana,Chris,Kathy,Alice,Andrew,Martin,Amy]"));
+		assertThat(string).isEqualTo("[Joe,Steven,Patrick,Diana,Chris,Kathy,Alice,Andrew,Martin,Amy]");
 	}
 
 	@Test
@@ -79,7 +82,7 @@ public class Exercise5Test {
 		 */
 		Optional<Customer> oldestCustomer = null;
 
-		assertThat(oldestCustomer.get(), is(customerList.get(3)));
+		assertThat(oldestCustomer).hasValue(customerList.get(3));
 	}
 
 	@Test
@@ -92,12 +95,13 @@ public class Exercise5Test {
 		 */
 		Map<Integer, Long> ageDistribution = null;
 
-		assertThat(ageDistribution.size(), is(9));
+		
+		assertThat(ageDistribution).hasSize(9);
 		ageDistribution.forEach((k, v) -> {
 			if (k.equals(22)) {
-				assertThat(v, is(2L));
+				assertThat(v).isEqualTo(2L);
 			} else {
-				assertThat(v, is(1L));
+				assertThat(v).isEqualTo(1L);
 			}
 		});
 	}

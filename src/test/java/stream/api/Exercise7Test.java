@@ -1,5 +1,6 @@
 package stream.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -11,6 +12,7 @@ import java.util.stream.LongStream;
 
 import javax.xml.bind.JAXB;
 
+import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,7 +39,7 @@ public class Exercise7Test {
 		IntStream ageStream = null;
 		OptionalDouble average = null;
 
-		assertThat(average.getAsDouble(), is(28.7));
+		assertThat(average.getAsDouble()).isEqualTo(28.7);
 	}
 
 	@Test
@@ -52,6 +54,6 @@ public class Exercise7Test {
 		LongStream priceStream = null;
 		long priceSum = 0;
 
-		assertThat(priceSum, is(60930L));
+		assertThat(priceSum).isEqualTo(60930L);
 	}
 }

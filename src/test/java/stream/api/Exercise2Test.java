@@ -1,5 +1,6 @@
 package stream.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
@@ -21,14 +22,13 @@ import common.test.tool.entity.Item;
 import common.test.tool.entity.OnlineShoppingMall;
 import common.test.tool.util.AssertUtil;
 
-public class Exercise2Test  {
+public class Exercise2Test {
 	private OnlineShoppingMall mall;
 
 	@Before
 	public void setup() {
 		mall = JAXB.unmarshal(new File("src/test/resources/data.xml"), OnlineShoppingMall.class);
 	}
-
 
 	@Test
 	public void sortByAge() {
@@ -41,7 +41,7 @@ public class Exercise2Test  {
 		Stream<Integer> sortedAgeStream = null;
 
 		List<Integer> sortedAgeList = sortedAgeStream.collect(Collectors.toList());
-		assertThat(sortedAgeList, contains(21, 22, 22, 26, 27, 28, 32, 35, 36, 38));
+		assertThat(sortedAgeList).containsExactly(21, 22, 22, 26, 27, 28, 32, 35, 36, 38);
 	}
 
 	@Test
@@ -56,7 +56,7 @@ public class Exercise2Test  {
 
 		assertTrue(AssertUtil.isLambda(descOrder));
 		List<Integer> sortedAgeList = sortedAgeStream.collect(Collectors.toList());
-		assertThat(sortedAgeList, contains(38, 36, 35, 32, 28, 27, 26, 22, 22, 21));
+		assertThat(sortedAgeList).containsExactly(38, 36, 35, 32, 28, 27, 26, 22, 22, 21);
 	}
 
 	@Test
@@ -70,7 +70,7 @@ public class Exercise2Test  {
 		Stream<String> top3RichCustomerStream = null;
 
 		List<String> top3RichCustomerList = top3RichCustomerStream.collect(Collectors.toList());
-		assertThat(top3RichCustomerList, contains("Diana", "Andrew", "Chris"));
+		assertThat(top3RichCustomerList).contains("Diana", "Andrew", "Chris");
 	}
 
 	@Test
@@ -83,7 +83,7 @@ public class Exercise2Test  {
 		Stream<Integer> distinctAgeStream = null;
 
 		List<Integer> distinctAgeList = distinctAgeStream.collect(Collectors.toList());
-		assertThat(distinctAgeList, contains(22, 27, 28, 38, 26, 32, 35, 21, 36));
+		assertThat(distinctAgeList).contains(22, 27, 28, 38, 26, 32, 35, 21, 36);
 	}
 
 	@Test
@@ -99,10 +99,10 @@ public class Exercise2Test  {
 
 		assertTrue(AssertUtil.isLambda(getItemStream));
 		List<String> itemList = itemStream.collect(Collectors.toList());
-		assertThat(itemList,
+		assertThat(itemList).
 				contains("small table", "plate", "fork", "ice cream", "screwdriver", "cable", "earphone", "onion",
 						"ice cream", "crisps", "chopsticks", "cable", "speaker", "headphone", "saw", "bond", "plane",
 						"bag", "cold medicine", "chair", "desk", "pants", "coat", "cup", "plate", "fork", "spoon",
-						"ointment", "poultice", "spinach", "ginseng", "onion"));
+						"ointment", "poultice", "spinach", "ginseng", "onion");
 	}
 }

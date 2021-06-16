@@ -1,5 +1,6 @@
 package stream.api;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.Matchers.contains;
 import static org.junit.Assert.assertThat;
 
@@ -19,7 +20,7 @@ public class Exercise6Test {
 		Stream<String> abcStream = null;
 
 		List<String> abcList = abcStream.collect(Collectors.toList());
-		assertThat(abcList, contains("a", "b", "c"));
+		assertThat(abcList).contains("a", "b", "c");
 	}
 
 	@Test
@@ -31,6 +32,6 @@ public class Exercise6Test {
 		Stream<Integer> numbers = null;
 
 		List<Integer> numbersList = numbers.collect(Collectors.toList());
-		assertThat(numbersList, contains(0, 3, 6, 9, 12, 15, 18, 21, 24, 27));
+		assertThat(numbersList).contains(0, 3, 6, 9, 12, 15, 18, 21, 24, 27);
 	}
 }
