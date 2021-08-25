@@ -41,8 +41,8 @@ public class Exercise1Test {
 
 		assertTrue("Solution for Predicate should be lambda expression", AssertUtil.isLambda(richCustomerCondition));
 		List<Customer> richCustomer = richCustomerStream.collect(Collectors.toList());
-		assertThat(richCustomer).hasSize(2);
-		assertThat(richCustomer).contains(customerList.get(3), customerList.get(7));
+
+		assertThat(richCustomer).hasSize(2).contains(customerList.get(3), customerList.get(7));
 	}
 
 	@Test
@@ -60,7 +60,7 @@ public class Exercise1Test {
 
 		assertTrue(AssertUtil.isLambda(getAgeFunction));
 		List<Integer> ages = ageStream.collect(Collectors.toList());
-		assertThat(ages).hasSize(10);
-		assertThat(ages).contains(22, 27, 28, 38, 26, 22, 32, 35, 21, 36);
+
+		assertThat(ages).hasSize(10).contains(22, 27, 28, 38, 26, 22, 32, 35, 21, 36);
 	}
 }

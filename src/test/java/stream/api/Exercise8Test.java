@@ -38,8 +38,7 @@ public class Exercise8Test {
 		List<String> itemListOnSale = null;
 		Set<String> itemSetNotOnSale = null;
 
-		assertThat(itemSetNotOnSale).hasSize(3);
-		assertThat(itemSetNotOnSale).contains("bag", "pants", "coat");
+		assertThat(itemSetNotOnSale).hasSize(3).contains("bag", "pants", "coat");
 	}
 
 	@Test
@@ -57,7 +56,6 @@ public class Exercise8Test {
 		Predicate<Customer> havingEnoughMoney = null;
 		List<String> customerNameList = null;
 
-		assertThat(customerNameList).hasSize(7);
-		assertThat(customerNameList).contains("Joe", "Patrick", "Chris", "Kathy", "Alice", "Andrew", "Amy");
+		assertThat(customerNameList).hasSize(7).contains("Joe", "Patrick", "Chris", "Kathy", "Alice", "Andrew", "Amy");
 	}
 }
