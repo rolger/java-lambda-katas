@@ -1,8 +1,6 @@
 package stream.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.contains;
-import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
@@ -99,10 +97,25 @@ public class Exercise2Test {
 
 		assertTrue(AssertUtil.isLambda(getItemStream));
 		List<String> itemList = itemStream.collect(Collectors.toList());
-		assertThat(itemList).
-				contains("small table", "plate", "fork", "ice cream", "screwdriver", "cable", "earphone", "onion",
-						"ice cream", "crisps", "chopsticks", "cable", "speaker", "headphone", "saw", "bond", "plane",
-						"bag", "cold medicine", "chair", "desk", "pants", "coat", "cup", "plate", "fork", "spoon",
-						"ointment", "poultice", "spinach", "ginseng", "onion");
+		assertThat(itemList).contains("small table", "plate", "fork", "ice cream", "screwdriver", "cable", "earphone",
+				"onion", "ice cream", "crisps", "chopsticks", "cable", "speaker", "headphone", "saw", "bond", "plane",
+				"bag", "cold medicine", "chair", "desk", "pants", "coat", "cup", "plate", "fork", "spoon", "ointment",
+				"poultice", "spinach", "ginseng", "onion");
 	}
+
+	@Test
+	public void howMuchCostAnItem() {
+		assertThat(cheapestPriceFor("spinach", itemsInShops())).isEqualTo(100);
+		assertThat(cheapestPriceFor("pc", itemsInShops())).isZero();
+		assertThat(cheapestPriceFor("chair", itemsInShops())).isEqualTo(600);
+	}
+
+	private Stream<Item> itemsInShops() {
+		return null;
+	}
+	
+	private Integer cheapestPriceFor(String itemName, Stream<Item> itemsInShops) {
+		return null;
+	}
+
 }

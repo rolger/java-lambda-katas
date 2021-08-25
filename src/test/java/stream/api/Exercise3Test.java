@@ -3,12 +3,9 @@ package stream.api;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
-import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collector;
-import java.util.stream.Stream;
 
 import javax.xml.bind.JAXB;
 

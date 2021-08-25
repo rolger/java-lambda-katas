@@ -1,8 +1,6 @@
 package stream.api;
 
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.hasSize;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.util.List;
@@ -40,8 +38,8 @@ public class Exercise8Test {
 		List<String> itemListOnSale = null;
 		Set<String> itemSetNotOnSale = null;
 
-		assertThat(itemSetNotOnSale, hasSize(3));
-		assertThat(itemSetNotOnSale, hasItems("bag", "pants", "coat"));
+		assertThat(itemSetNotOnSale).hasSize(3);
+		assertThat(itemSetNotOnSale).contains("bag", "pants", "coat");
 	}
 
 	@Test
@@ -59,7 +57,7 @@ public class Exercise8Test {
 		Predicate<Customer> havingEnoughMoney = null;
 		List<String> customerNameList = null;
 
-		assertThat(customerNameList, hasSize(7));
-		assertThat(customerNameList, hasItems("Joe", "Patrick", "Chris", "Kathy", "Alice", "Andrew", "Amy"));
+		assertThat(customerNameList).hasSize(7);
+		assertThat(customerNameList).contains("Joe", "Patrick", "Chris", "Kathy", "Alice", "Andrew", "Amy");
 	}
 }

@@ -1,8 +1,6 @@
 package stream.api;
 
-import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.File;
 import java.util.Arrays;
@@ -50,7 +48,7 @@ public class Exercise9Test {
 		Collector<String, ?, String> toCsv = new CollectorImpl<>(supplier, accumulator, combiner, finisher,
 				Collections.emptySet());
 		String nameAsCsv = customerList.stream().map(Customer::getName).collect(toCsv);
-		assertThat(nameAsCsv, is("Joe,Steven,Patrick,Diana,Chris,Kathy,Alice,Andrew,Martin,Amy"));
+		assertThat(nameAsCsv).isEqualTo("Joe,Steven,Patrick,Diana,Chris,Kathy,Alice,Andrew,Martin,Amy");
 	}
 
 	@Test
@@ -71,14 +69,14 @@ public class Exercise9Test {
 				combiner, finisher,
 				EnumSet.of(Collector.Characteristics.CONCURRENT, Collector.Characteristics.IDENTITY_FINISH));
 		Map<String, Set<String>> itemMap = customerList.stream().parallel().collect(toItemAsKey);
-		assertThat(itemMap.get("plane"), containsInAnyOrder("Chris"));
-		assertThat(itemMap.get("onion"), containsInAnyOrder("Patrick", "Amy"));
-		assertThat(itemMap.get("ice cream"), containsInAnyOrder("Patrick", "Steven"));
-		assertThat(itemMap.get("earphone"), containsInAnyOrder("Steven"));
-		assertThat(itemMap.get("plate"), containsInAnyOrder("Joe", "Martin"));
-		assertThat(itemMap.get("fork"), containsInAnyOrder("Joe", "Martin"));
-		assertThat(itemMap.get("cable"), containsInAnyOrder("Diana", "Steven"));
-		assertThat(itemMap.get("desk"), containsInAnyOrder("Alice"));
+		assertThat(itemMap.get("plane")).contains("Chris");
+		assertThat(itemMap.get("onion")).contains("Patrick", "Amy");
+		assertThat(itemMap.get("ice cream")).contains("Patrick", "Steven");
+		assertThat(itemMap.get("earphone")).contains("Steven");
+		assertThat(itemMap.get("plate")).contains("Joe", "Martin");
+		assertThat(itemMap.get("fork")).contains("Joe", "Martin");
+		assertThat(itemMap.get("cable")).contains("Diana", "Steven");
+		assertThat(itemMap.get("desk")).contains("Alice");
 	}
 
 	@Test
@@ -92,8 +90,6 @@ public class Exercise9Test {
 		Collector<String, ?, String> toBitString = null;
 
 		String bitString = Arrays.stream(bitList.split(",")).collect(toBitString);
-		assertThat(bitString, is("01011000101001111000011100000000100001110111010101")
-
-		);
+		assertThat(bitList).isEqualTo("01011000101001111000011100000000100001110111010101");
 	}
 }

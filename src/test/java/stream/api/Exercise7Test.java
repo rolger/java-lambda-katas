@@ -1,8 +1,6 @@
 package stream.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.util.List;
@@ -12,7 +10,6 @@ import java.util.stream.LongStream;
 
 import javax.xml.bind.JAXB;
 
-import org.hamcrest.core.IsEqual;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -1,23 +1,15 @@
 package stream.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.entry;
-import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.hasItems;
-import static org.hamcrest.Matchers.hasSize;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 import java.io.File;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 
 import javax.xml.bind.JAXB;
 
-import org.assertj.core.api.Condition;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -95,7 +87,6 @@ public class Exercise5Test {
 		 */
 		Map<Integer, Long> ageDistribution = null;
 
-		
 		assertThat(ageDistribution).hasSize(9);
 		ageDistribution.forEach((k, v) -> {
 			if (k.equals(22)) {
